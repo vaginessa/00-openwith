@@ -1,5 +1,6 @@
 package com.tasomaniac.openwith;
 
+import com.tasomaniac.openwith.browser.PreferredBrowserActivity;
 import com.tasomaniac.openwith.homescreen.AddToHomeScreen;
 import com.tasomaniac.openwith.homescreen.AddToHomeScreenDialogFragment;
 import com.tasomaniac.openwith.intro.IntroActivity;
@@ -14,16 +15,6 @@ import dagger.android.ContributesAndroidInjector;
 
 @Module
 interface BindingModule {
-
-    @PerActivity
-    @ContributesAndroidInjector
-    AddToHomeScreenDialogFragment addToHomeScreenDialogFragment();
-
-    @ContributesAndroidInjector
-    AddToHomeScreen addToHomeScreen();
-
-    @ContributesAndroidInjector
-    PreferredAppsActivity preferredAppsActivity();
 
     @ContributesAndroidInjector
     SettingsActivity settingsActivity();
@@ -41,5 +32,18 @@ interface BindingModule {
     ShareToOpenWith shareToOpenWith();
 
     @ContributesAndroidInjector
+    PreferredAppsActivity preferredAppsActivity();
+
+    @ContributesAndroidInjector
+    PreferredBrowserActivity preferredBrowserActivity();
+
+    @ContributesAndroidInjector
     ResolverChooserTargetService resolverChooserTargetService();
+
+    @PerActivity
+    @ContributesAndroidInjector
+    AddToHomeScreenDialogFragment addToHomeScreenDialogFragment();
+
+    @ContributesAndroidInjector
+    AddToHomeScreen addToHomeScreen();
 }

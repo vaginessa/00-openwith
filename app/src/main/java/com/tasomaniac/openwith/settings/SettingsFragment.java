@@ -20,6 +20,7 @@ import android.text.style.ForegroundColorSpan;
 
 import com.tasomaniac.openwith.BuildConfig;
 import com.tasomaniac.openwith.R;
+import com.tasomaniac.openwith.browser.PreferredBrowserActivity;
 import com.tasomaniac.openwith.data.Analytics;
 import com.tasomaniac.openwith.data.prefs.BooleanPreference;
 import com.tasomaniac.openwith.data.prefs.UsageAccess;
@@ -44,14 +45,8 @@ public class SettingsFragment extends PreferenceFragmentCompat
 
     private PreferenceCategory usageStatsPreferenceCategory;
 
-    public SettingsFragment() {
-    }
-
     public static SettingsFragment newInstance() {
-        SettingsFragment fragment = new SettingsFragment();
-        Bundle args = new Bundle();
-        fragment.setArguments(args);
-        return fragment;
+        return new SettingsFragment();
     }
 
     @Override
@@ -67,6 +62,7 @@ public class SettingsFragment extends PreferenceFragmentCompat
 
         findPreference(R.string.pref_key_about).setOnPreferenceClickListener(this);
         findPreference(R.string.pref_key_preferred).setOnPreferenceClickListener(this);
+        findPreference(R.string.pref_key_browser).setOnPreferenceClickListener(this);
         findPreference(R.string.pref_key_open_source).setOnPreferenceClickListener(this);
         findPreference(R.string.pref_key_contact).setOnPreferenceClickListener(this);
 
@@ -200,6 +196,8 @@ public class SettingsFragment extends PreferenceFragmentCompat
             startActivity(new Intent(getActivity(), IntroActivity.class));
         } else if (getString(R.string.pref_key_preferred).equals(preference.getKey())) {
             startActivity(new Intent(getActivity(), PreferredAppsActivity.class));
+        } else if (getString(R.string.pref_key_browser).equals(preference.getKey())) {
+            startActivity(new Intent(getActivity(), PreferredBrowserActivity.class));
         } else if (getString(R.string.pref_key_usage_stats).equals(preference.getKey())) {
             onUsageAccessClick(preference);
         } else if (getString(R.string.pref_key_open_source).equals(preference.getKey())) {
