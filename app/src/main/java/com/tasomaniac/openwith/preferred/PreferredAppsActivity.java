@@ -69,8 +69,8 @@ public class PreferredAppsActivity extends DaggerAppCompatActivity implements
 
     @Override
     protected void onDestroy() {
-        super.onDestroy();
         adapter.setItemClickListener(null);
+        super.onDestroy();
     }
 
     @Override

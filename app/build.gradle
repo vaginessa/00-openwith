@@ -2,6 +2,8 @@ plugins {
     id 'net.ltgt.errorprone' version '0.0.10'
 }
 apply plugin: 'com.android.application'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-kapt'
 apply plugin: 'com.novoda.android-command'
 apply plugin: 'com.novoda.build-properties'
 apply plugin: 'com.jakewharton.hugo'
@@ -95,6 +97,8 @@ dependencies {
     def daggerVersion = '2.11'
     def okHttpVersion = '3.8.1'
 
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jre7:$kotlin_version"
+
     implementation "com.android.support:appcompat-v7:$supportLibVersion"
     implementation "com.android.support:recyclerview-v7:$supportLibVersion"
     implementation "com.android.support:design:$supportLibVersion"
@@ -103,15 +107,15 @@ dependencies {
     implementation 'com.tasomaniac:delayed-progress:0.4'
 
     implementation "net.simonvt.schematic:schematic:$schematicVersion"
-    annotationProcessor "net.simonvt.schematic:schematic-compiler:$schematicVersion"
+    kapt "net.simonvt.schematic:schematic-compiler:$schematicVersion"
 
     implementation "com.google.dagger:dagger:$daggerVersion"
-    annotationProcessor "com.google.dagger:dagger-compiler:$daggerVersion"
+    kapt "com.google.dagger:dagger-compiler:$daggerVersion"
     compile "com.google.dagger:dagger-android-support:$daggerVersion"
-    annotationProcessor "com.google.dagger:dagger-android-processor:$daggerVersion"
+    kapt "com.google.dagger:dagger-android-processor:$daggerVersion"
 
     implementation "com.jakewharton:butterknife:$butterKnifeVersion"
-    annotationProcessor "com.jakewharton:butterknife-compiler:$butterKnifeVersion"
+    kapt "com.jakewharton:butterknife-compiler:$butterKnifeVersion"
     implementation 'com.jakewharton.timber:timber:4.5.1'
 
     implementation "com.squareup.okhttp3:okhttp:$okHttpVersion"

@@ -93,7 +93,7 @@ class IntentResolver {
     }
 
     private List<DisplayResolveInfo> groupResolveList(List<ResolveInfo> currentResolveList) {
-        if (currentResolveList.size() <= 0) {
+        if (currentResolveList.isEmpty()) {
             return Collections.emptyList();
         }
         return resolveListGrouper.groupResolveList(currentResolveList);
