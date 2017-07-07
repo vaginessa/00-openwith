@@ -45,7 +45,7 @@ public class AppRemoveDialogFragment extends AppCompatDialogFragment {
         CharSequence message = appRemoveDialogContentFrom(getResources(), info);
 
         return new AlertDialog.Builder(getActivity())
-                .setTitle(R.string.title_remove_preferred)
+                .setTitle(R.string.preferred_remove_title)
                 .setMessage(message)
                 .setPositiveButton(android.R.string.ok, (dialog, which) -> callbacks.onAppRemoved(info))
                 .setNegativeButton(android.R.string.cancel, null)
@@ -62,7 +62,7 @@ public class AppRemoveDialogFragment extends AppCompatDialogFragment {
 
     private static CharSequence appRemoveDialogContentFrom(Resources resources, DisplayResolveInfo info) {
         String content = resources.getString(
-                R.string.message_remove_preferred,
+                R.string.preferred_remove_message,
                 info.displayLabel(),
                 info.extendedInfo(),
                 info.extendedInfo()

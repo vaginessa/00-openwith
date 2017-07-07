@@ -7,11 +7,11 @@
   <string name="activity_resolver_use_always">دائماً</string>
   <string name="which_view_application">فتح بواسطة</string>
   <string name="which_view_application_named">فتح بواسطة %1$s</string>
-  <string name="title_preferred_apps">التطبيقات المفضلة</string>
-  <string name="desc_preferred">التطبيقات المفضلة والتي سيتم إستخدامها مباشرة عند مشاركة أحد الروابط التي بالأسفل مع هذا التطبيق.\n\n إضغط لحذف أحد التطبيقات المفضلة.</string>
-  <string name="desc_preferred_empty">التطبيقات المفضلة والتي سيتم إستخدامها مباشرة عند مشاركة أحد الروابط التي بالأسفل مع هذا التطبيق.\n\n يمكنك تحديد التطبيقات المفضلة عن طريق مشاركة الروابط مع هذا التطبيق ثم تقوم بإختيار \"دائماً\"</string>
-  <string name="title_remove_preferred">حذف تطبيق مفضل؟</string>
-  <string name="message_remove_preferred"><![CDATA[
+  <string name="preferred_title">التطبيقات المفضلة</string>
+  <string name="preferred_description">التطبيقات المفضلة والتي سيتم إستخدامها مباشرة عند مشاركة أحد الروابط التي بالأسفل مع هذا التطبيق.\n\n إضغط لحذف أحد التطبيقات المفضلة.</string>
+  <string name="preferred_empty_description">التطبيقات المفضلة والتي سيتم إستخدامها مباشرة عند مشاركة أحد الروابط التي بالأسفل مع هذا التطبيق.\n\n يمكنك تحديد التطبيقات المفضلة عن طريق مشاركة الروابط مع هذا التطبيق ثم تقوم بإختيار \"دائماً\"</string>
+  <string name="preferred_remove_title">حذف تطبيق مفضل؟</string>
+  <string name="preferred_remove_message"><![CDATA[
     حذف <strong>%1$s</strong> كتطبيق مفضل لفتح روابط <strong>%2$s</strong> به؟ <br><br><strong>ملاحظة:</strong> يمكنك تعيين تطبيق مفضل جديد في المرة القادمة التي تقوم فيها بمشاركة رابط <strong>%3$s</strong>.
     ]]></string>
   <string name="error_invalid_url">المحتوى المشارك لا يحتوي علي أي رابط صحيح.</string>

@@ -7,11 +7,11 @@
   <string name="activity_resolver_use_always">Immer</string>
   <string name="which_view_application">Öffnen mit</string>
   <string name="which_view_application_named">Öffnen mit %1$s</string>
-  <string name="title_preferred_apps">Bevorzugte Apps</string>
-  <string name="desc_preferred">Bevorzugte Apps, welche für die unten stehenden Links direkt verwendet werden.\n\nDrücken um eine bevorzugte App zu entfernen.</string>
-  <string name="desc_preferred_empty">Bevorzugte Apps, welche direkt verwendet werden wenn die unten stehenden Links mit dieser App geteilt werden.\n\n Sie können bevorzugte Apps auswählen, indem Sie Links mit dieser App teilen und dann auf \"Immer\" klicken</string>
-  <string name="title_remove_preferred">Bevorzugte entfernen?</string>
-  <string name="message_remove_preferred"><![CDATA[
+  <string name="preferred_title">Bevorzugte Apps</string>
+  <string name="preferred_description">Bevorzugte Apps, welche für die unten stehenden Links direkt verwendet werden.\n\nDrücken um eine bevorzugte App zu entfernen.</string>
+  <string name="preferred_empty_description">Bevorzugte Apps, welche direkt verwendet werden wenn die unten stehenden Links mit dieser App geteilt werden.\n\n Sie können bevorzugte Apps auswählen, indem Sie Links mit dieser App teilen und dann auf \"Immer\" klicken</string>
+  <string name="preferred_remove_title">Bevorzugte entfernen?</string>
+  <string name="preferred_remove_message"><![CDATA[
     Remove <strong>%1$s</strong> as the preferred app to load <strong>%2$s</strong> links with?<br><br><strong>Note:</strong> You can set a new preferred app to use next time you share <strong>%3$s</strong> link.
     ]]></string>
   <string name="error_invalid_url">The shared content did not have any valid URLs.</string>

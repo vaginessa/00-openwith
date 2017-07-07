@@ -7,11 +7,11 @@
   <string name="activity_resolver_use_always">Sempre</string>
   <string name="which_view_application">Abrir com</string>
   <string name="which_view_application_named">Abrir com %1$s</string>
-  <string name="title_preferred_apps">Aplicações pré-definidas</string>
-  <string name="desc_preferred">Aplicações pré-definidas para serem usadas diretamente quando as ligações são partilhadas com esta aplicação.\n\nToque para remover uma aplicação predefinida em baixo.</string>
-  <string name="desc_preferred_empty">Aplicações pré-definidas para serem usadas diretamente quando as ligações são partilhadas com esta aplicação.\n\nPode definir aplicações pré-definidas se partilhar as ligações com esta aplicação e escolher \"Sempre\"</string>
-  <string name="title_remove_preferred">Remover predefinição?</string>
-  <string name="message_remove_preferred"><![CDATA[
+  <string name="preferred_title">Aplicações pré-definidas</string>
+  <string name="preferred_description">Aplicações pré-definidas para serem usadas diretamente quando as ligações são partilhadas com esta aplicação.\n\nToque para remover uma aplicação predefinida em baixo.</string>
+  <string name="preferred_empty_description">Aplicações pré-definidas para serem usadas diretamente quando as ligações são partilhadas com esta aplicação.\n\nPode definir aplicações pré-definidas se partilhar as ligações com esta aplicação e escolher \"Sempre\"</string>
+  <string name="preferred_remove_title">Remover predefinição?</string>
+  <string name="preferred_remove_message"><![CDATA[
 Remover <strong>%1$s</strong> como a aplicação predefinida para abrir ligações de <strong>%2$s</strong>? <br><br><strong>Nota:</strong> pode definir uma nova aplicação predefinida para usar na próxima vez que partilhar o link <strong>%3$s</strong>.    ]]></string>
   <string name="error_invalid_url">O conteúdo partilhado não tinha quaisquer URLs válidos.</string>
   <string name="empty_resolver_activity">Nenhuma outra aplicação encontrada para lidar com a URL.</string>

@@ -21,9 +21,9 @@ class PreferredAppsAdapter extends HeaderAdapter {
     @Override
     protected void onBindHeaderViewHolder(HeaderViewHolder holder) {
         if (innerAdapter.getItemCount() == 0) {
-            holder.setText(R.string.desc_preferred_empty);
+            holder.setText(R.string.preferred_empty_description);
         } else {
-            holder.setText(R.string.desc_preferred);
+            holder.setText(R.string.preferred_description);
         }
     }
 

@@ -7,11 +7,11 @@
   <string name="activity_resolver_use_always">Sempre</string>
   <string name="which_view_application">Apri con</string>
   <string name="which_view_application_named">Apri con %1$s</string>
-  <string name="title_preferred_apps">App preferite</string>
-  <string name="desc_preferred">Applicazioni preferite da usare direttamente quando i link qui sotto sono condivisi con questa app.\n\nPremi per rimuovere un\'app preferita.</string>
-  <string name="desc_preferred_empty">Applicazioni preferite da usare direttamente quando i link qui sotto sono condivisi con questa app.\n\nPuoi selezionare le app preferite condividendo il link con quest\'app e scegliendo \"Sempre\"</string>
-  <string name="title_remove_preferred">Rimuovere il preferito?</string>
-  <string name="message_remove_preferred"><![CDATA[
+  <string name="preferred_title">App preferite</string>
+  <string name="preferred_description">Applicazioni preferite da usare direttamente quando i link qui sotto sono condivisi con questa app.\n\nPremi per rimuovere un\'app preferita.</string>
+  <string name="preferred_empty_description">Applicazioni preferite da usare direttamente quando i link qui sotto sono condivisi con questa app.\n\nPuoi selezionare le app preferite condividendo il link con quest\'app e scegliendo \"Sempre\"</string>
+  <string name="preferred_remove_title">Rimuovere il preferito?</string>
+  <string name="preferred_remove_message"><![CDATA[
 Rimuovi <strong>%1$s</strong> come app preferita per caricare i link di <strong>%2$s</strong>?<br><br><strong>Nota:</strong> Puoi selezionare una nuova app preferita da usare la prossima volta che condividi un link <strong>%3$s</strong>.    ]]></string>
   <string name="error_invalid_url">Il contenuto condiviso non ha nessun URL valido.</string>
   <string name="empty_resolver_activity">Nessun\'altra applicazione trovata per gestire l\'URL.</string>

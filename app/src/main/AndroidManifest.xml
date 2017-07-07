@@ -39,12 +39,12 @@
 
     <activity
       android:name=".preferred.PreferredAppsActivity"
-      android:label="@string/title_preferred_apps"
+      android:label="@string/preferred_title"
       android:parentActivityName=".settings.SettingsActivity" />
 
     <activity
       android:name=".browser.PreferredBrowserActivity"
-      android:label="@string/title_browser"
+      android:label="@string/browser_title"
       android:parentActivityName=".settings.SettingsActivity" />
 
     <activity
