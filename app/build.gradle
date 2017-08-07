@@ -1,14 +1,11 @@
-plugins {
-    id 'net.ltgt.errorprone' version '0.0.10'
-}
 apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-kapt'
 apply plugin: 'com.novoda.android-command'
 apply plugin: 'com.novoda.build-properties'
-apply plugin: 'com.jakewharton.hugo'
 apply plugin: 'com.github.triplet.play'
 apply plugin: 'io.fabric'
+apply plugin: 'net.ltgt.errorprone'
 
 def signingFile = file('props/release.signing')
 buildProperties {
@@ -79,8 +76,9 @@ android {
         textReport true
         textOutput 'stdout'
 
-        fatal 'UnusedResources'
-        warning 'InvalidPackage'
+        lintConfig file('props/lint.xml')
+        // We run a full lint analysis as build part in CI, so skip vital checks for assemble tasks.
+        checkReleaseBuilds false
     }
 }
 
@@ -90,19 +88,26 @@ play {
     track = 'beta'
 }
 
+configurations {
+    implementation.exclude module: 'support-v4'
+    compile.exclude module: 'support-v4'
+}
+
 dependencies {
-    def supportLibVersion = '26.0.0-beta2'
+    def supportLibVersion = '26.0.0'
     def schematicVersion = '0.7.0'
-    def butterKnifeVersion = '8.6.0'
+    def butterKnifeVersion = '8.7.0'
     def daggerVersion = '2.11'
     def okHttpVersion = '3.8.1'
 
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jre7:$kotlin_version"
 
+    implementation "com.android.support:support-fragment:$supportLibVersion"
     implementation "com.android.support:appcompat-v7:$supportLibVersion"
     implementation "com.android.support:recyclerview-v7:$supportLibVersion"
     implementation "com.android.support:design:$supportLibVersion"
     implementation "com.android.support:preference-v14:$supportLibVersion"
+    implementation 'com.duolingo.open:rtl-viewpager:1.0.2'
 
     implementation 'com.tasomaniac:delayed-progress:0.4'
 
@@ -111,7 +116,7 @@ dependencies {
 
     implementation "com.google.dagger:dagger:$daggerVersion"
     kapt "com.google.dagger:dagger-compiler:$daggerVersion"
-    compile "com.google.dagger:dagger-android-support:$daggerVersion"
+    implementation "com.google.dagger:dagger-android-support:$daggerVersion"
     kapt "com.google.dagger:dagger-android-processor:$daggerVersion"
 
     implementation "com.jakewharton:butterknife:$butterKnifeVersion"
@@ -120,7 +125,7 @@ dependencies {
 
     implementation "com.squareup.okhttp3:okhttp:$okHttpVersion"
     implementation 'io.reactivex.rxjava2:rxandroid:2.0.1'
-    implementation 'io.reactivex.rxjava2:rxjava:2.1.1'
+    implementation 'io.reactivex.rxjava2:rxjava:2.1.2'
 
     playImplementation 'com.crashlytics.sdk.android:crashlytics:2.6.8'
 

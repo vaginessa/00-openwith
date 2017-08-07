@@ -6,7 +6,6 @@ import com.tasomaniac.openwith.homescreen.AddToHomeScreenDialogFragment;
 import com.tasomaniac.openwith.intro.IntroActivity;
 import com.tasomaniac.openwith.preferred.PreferredAppsActivity;
 import com.tasomaniac.openwith.redirect.RedirectFixActivity;
-import com.tasomaniac.openwith.resolver.ResolverChooserTargetService;
 import com.tasomaniac.openwith.settings.SettingsActivity;
 import com.tasomaniac.openwith.settings.SettingsFragment;
 
@@ -36,9 +35,6 @@ interface BindingModule {
 
     @ContributesAndroidInjector
     PreferredBrowserActivity preferredBrowserActivity();
-
-    @ContributesAndroidInjector
-    ResolverChooserTargetService resolverChooserTargetService();
 
     @PerActivity
     @ContributesAndroidInjector
