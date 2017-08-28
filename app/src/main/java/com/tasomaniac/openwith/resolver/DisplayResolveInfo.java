@@ -9,6 +9,8 @@ import android.text.TextUtils;
 
 import com.tasomaniac.openwith.util.ResolverInfos;
 
+import javax.annotation.Nullable;
+
 public final class DisplayResolveInfo implements Parcelable {
     private final ResolveInfo ri;
     private final CharSequence displayLabel;
@@ -87,6 +89,7 @@ public final class DisplayResolveInfo implements Parcelable {
         return extendedInfo;
     }
 
+    @Nullable
     public Drawable displayIcon() {
         return displayIcon;
     }
