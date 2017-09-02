@@ -3,7 +3,6 @@ package com.tasomaniac.openwith.intro;
 import android.annotation.TargetApi;
 import android.content.Context;
 import android.content.Intent;
-import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.annotation.RequiresApi;
@@ -67,7 +66,7 @@ public class IntroActivity extends AppIntro {
         }
     }
 
-    @RequiresApi(Build.VERSION_CODES.LOLLIPOP)
+    @RequiresApi(LOLLIPOP)
     private void addUsageStatsSlide() {
         usageStatsSlideAdded = true;
         addSlide(new AppIntroFragment.Builder()
@@ -87,7 +86,7 @@ public class IntroActivity extends AppIntro {
     public void onNextPressed() {
     }
 
-    @TargetApi(Build.VERSION_CODES.LOLLIPOP)
+    @TargetApi(LOLLIPOP)
     @Override
     public void onDonePressed() {
         if (usageStatsSlideAdded && !Utils.isUsageStatsEnabled(this)) {
@@ -100,7 +99,7 @@ public class IntroActivity extends AppIntro {
         }
     }
 
-    @TargetApi(Build.VERSION_CODES.LOLLIPOP)
+    @TargetApi(LOLLIPOP)
     @Override
     protected void onResume() {
         super.onResume();
