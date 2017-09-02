@@ -185,7 +185,7 @@ public class ResolverActivity extends ComponentActivity<ResolverComponent> imple
         if (checkedPos != RecyclerView.NO_POSITION) {
             alwaysButton.setEnabled(true);
             onceButton.setEnabled(true);
-            adapter.setItemChecked(checkedPos);
+            adapter.setCheckedItemPosition(checkedPos);
         }
     }
 
