@@ -1,4 +1,6 @@
 buildscript {
+
+  ext.isPlay = project.hasProperty('play')
   ext.ci = 'true' == System.getenv('CI')
 
   def versionMajor = 1
@@ -16,6 +18,7 @@ buildscript {
       kotlin     : '1.1.51',
       okHttp     : '3.9.0',
       schematic  : '0.7.0',
+      gms        : '11.4.2',
       supportLib : '27.0.0',
   ]
 
@@ -34,6 +37,7 @@ buildscript {
     classpath 'com.novoda:build-properties-plugin:1.2.1'
     classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$versions.kotlin"
     classpath 'net.ltgt.gradle:gradle-errorprone-plugin:0.0.13'
+    if (isPlay) classpath 'com.google.gms:google-services:3.1.1'
   }
 }
 
@@ -43,6 +47,5 @@ allprojects {
   repositories {
     google()
     jcenter()
-    maven { url 'https://maven.fabric.io/public' }
   }
 }
