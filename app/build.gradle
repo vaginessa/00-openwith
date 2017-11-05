@@ -4,7 +4,7 @@ apply plugin: 'kotlin-kapt'
 apply plugin: 'com.novoda.android-command'
 apply plugin: 'com.novoda.build-properties'
 apply plugin: 'com.github.triplet.play'
-apply plugin: 'io.fabric'
+if (isPlay) apply plugin: 'io.fabric'
 apply plugin: 'net.ltgt.errorprone'
 
 def signingFile = file('props/release.signing')
@@ -42,7 +42,6 @@ android {
 
   buildTypes {
     debug {
-      ext.enableCrashlytics = false
       applicationIdSuffix '.debug'
       versionNameSuffix '-debug'
       signingConfig signingConfigs.debug
@@ -107,9 +106,8 @@ dependencies {
   implementation "net.simonvt.schematic:schematic:$versions.schematic"
   kapt "net.simonvt.schematic:schematic-compiler:$versions.schematic"
 
-  implementation "com.google.dagger:dagger:$versions.dagger"
-  kapt "com.google.dagger:dagger-compiler:$versions.dagger"
   implementation "com.google.dagger:dagger-android-support:$versions.dagger"
+  kapt "com.google.dagger:dagger-compiler:$versions.dagger"
   kapt "com.google.dagger:dagger-android-processor:$versions.dagger"
 
   implementation "com.jakewharton:butterknife:$versions.butterKnife"
@@ -121,11 +119,14 @@ dependencies {
   implementation 'io.reactivex.rxjava2:rxjava:2.1.6'
 
   playImplementation 'com.crashlytics.sdk.android:crashlytics:2.7.1'
+  playImplementation "com.google.firebase:firebase-core:$versions.gms"
 
   testImplementation 'junit:junit:4.12'
   testImplementation 'org.mockito:mockito-core:2.11.0'
   testImplementation "com.squareup.okhttp3:mockwebserver:$versions.okHttp"
 }
+
+if (isPlay) apply plugin: 'com.google.gms.google-services'
 
 project.tasks.withType(JavaCompile) {
   options.compilerArgs += [
