@@ -1,10 +1,8 @@
 buildscript {
-
-  ext.isPlay = project.hasProperty('play')
   ext.ci = 'true' == System.getenv('CI')
 
   def versionMajor = 1
-  def versionMinor = 6
+  def versionMinor = 8
   def versionBuild = 2
 
   ext.versions = [
@@ -14,12 +12,11 @@ buildscript {
       versionName: "${versionMajor}.${versionMinor}",
 
       butterKnife: '8.8.1',
-      dagger     : '2.12',
-      kotlin     : '1.1.51',
-      okHttp     : '3.9.0',
+      dagger     : '2.13',
+      kotlin     : '1.1.60',
+      okHttp     : '3.9.1',
       schematic  : '0.7.0',
-      gms        : '11.4.2',
-      supportLib : '27.0.0',
+      supportLib : '27.0.1',
   ]
 
   repositories {
@@ -29,15 +26,14 @@ buildscript {
     maven { url 'https://plugins.gradle.org/m2' }
   }
   dependencies {
-    classpath 'com.android.tools.build:gradle:3.1.0-alpha02'
+    classpath 'com.android.tools.build:gradle:3.1.0-alpha04'
     classpath 'com.github.ben-manes:gradle-versions-plugin:0.17.0'
     classpath 'com.github.triplet.gradle:play-publisher:1.2.0'
-    classpath 'io.fabric.tools:gradle:1.24.4'
+    classpath 'io.fabric.tools:gradle:1.24.5'
     classpath 'com.novoda:gradle-android-command-plugin:1.7.1'
     classpath 'com.novoda:build-properties-plugin:1.2.1'
-    classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$versions.kotlin"
     classpath 'net.ltgt.gradle:gradle-errorprone-plugin:0.0.13'
-    if (isPlay) classpath 'com.google.gms:google-services:3.1.1'
+    classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$versions.kotlin"
   }
 }
 

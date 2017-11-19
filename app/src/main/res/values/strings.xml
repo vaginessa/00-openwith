@@ -46,6 +46,23 @@
   <string name="pref_title_usage_stats">Usage Stats</string>
   <string name="pref_summary_usage_stats">Improve the application sorting by giving access to Usage Stats.</string>
 
+  <string name="pref_title_category_display">Display</string>
+
+  <string name="pref_key_night_mode" translatable="false">pref_night_mode</string>
+  <string name="pref_value_night_mode_off" translatable="false">off</string>
+  <string name="pref_value_night_mode_on" translatable="false">on</string>
+  <string name="pref_value_night_mode_auto" translatable="false">auto</string>
+  <string name="pref_title_night_mode">Night Mode</string>
+  <string name="pref_entry_night_mode_off">Off</string>
+  <string name="pref_entry_night_mode_on">On</string>
+  <string name="pref_entry_night_mode_auto">Automatic at sunset</string>
+
+  <string name="pref_key_category_clipboard" translatable="false">pref_category_clipboard</string>
+  <string name="pref_title_category_clipboard">Link you copied</string>
+
+  <string name="pref_key_clipboard" translatable="false">pref_clipboard</string>
+  <string name="pref_title_clipboard">Click to open with…</string>
+
   <string name="pref_title_category_others">Others</string>
 
   <string name="pref_key_open_source" translatable="false">pref_open_source</string>

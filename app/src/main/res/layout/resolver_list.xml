@@ -29,7 +29,7 @@
   <LinearLayout
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="@color/white"
+    android:background="@color/window_background"
     android:elevation="8dp"
     app:layout_alwaysShow="true">
 
@@ -51,7 +51,7 @@
     android:id="@+id/resolver_list"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="@color/white"
+    android:background="@color/window_background"
     android:clipToPadding="false"
     android:divider="@null"
     android:elevation="8dp"
@@ -62,7 +62,7 @@
     style="?attr/buttonBarStyle"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="@color/white"
+    android:background="@color/window_background"
     android:elevation="8dp"
     android:gravity="end|center_vertical"
     android:measureWithLargestChild="true"
@@ -84,7 +84,6 @@
       android:enabled="false"
       android:maxLines="2"
       android:minHeight="@dimen/alert_dialog_button_bar_height"
-      android:onClick="onButtonClick"
       android:text="@string/activity_resolver_use_once" />
 
     <Button
@@ -96,7 +95,6 @@
       android:enabled="false"
       android:maxLines="2"
       android:minHeight="@dimen/alert_dialog_button_bar_height"
-      android:onClick="onButtonClick"
       android:text="@string/activity_resolver_use_always" />
   </LinearLayout>
 

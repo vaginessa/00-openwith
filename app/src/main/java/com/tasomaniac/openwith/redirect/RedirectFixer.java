@@ -57,7 +57,7 @@ class RedirectFixer {
                 .doOnError(throwable -> cancel())
                 .onErrorReturn(throwable -> lastUrl)
                 .doOnDispose(this::cancel)
-                .compose(scheduling.applyToSingle());
+                .compose(scheduling.forSingle());
     }
 
     private HttpUrl doFollowRedirects(HttpUrl url) throws IOException {
@@ -75,11 +75,8 @@ class RedirectFixer {
     @Nullable
     private String fetchLocationHeader(HttpUrl url) throws IOException {
         call = client.newCall(request(url));
-        Response response = call.execute();
-        try {
+        try (Response response = call.execute()) {
             return response.header("Location");
-        } finally {
-            response.close();
         }
     }
 

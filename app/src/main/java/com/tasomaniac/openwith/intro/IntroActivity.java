@@ -9,10 +9,15 @@ import android.support.annotation.RequiresApi;
 
 import com.tasomaniac.openwith.R;
 import com.tasomaniac.openwith.data.Analytics;
+import com.tasomaniac.openwith.rx.SchedulingStrategy;
+import com.tasomaniac.openwith.settings.UsageStats;
+import com.tasomaniac.openwith.settings.UsageStatsKt;
 import com.tasomaniac.openwith.util.Intents;
-import com.tasomaniac.openwith.util.Utils;
 
 import javax.inject.Inject;
+
+import io.reactivex.disposables.CompositeDisposable;
+import io.reactivex.disposables.Disposable;
 
 import static android.os.Build.VERSION.SDK_INT;
 import static android.os.Build.VERSION_CODES.LOLLIPOP;
@@ -21,9 +26,12 @@ public class IntroActivity extends AppIntro {
 
     private static final String EXTRA_FIRST_START = "first_start";
 
-    private boolean usageStatsSlideAdded;
-
     @Inject Analytics analytics;
+    @Inject SchedulingStrategy schedulingStrategy;
+
+    private final CompositeDisposable disposables = new CompositeDisposable();
+
+    private boolean usageStatsSlideAdded;
 
     public static Intent newIntent(Context context) {
         return new Intent(context, IntroActivity.class)
@@ -32,7 +40,9 @@ public class IntroActivity extends AppIntro {
 
     @Override
     public void init(@Nullable Bundle savedInstanceState) {
-        analytics.sendScreenView(this, "App Intro");
+        if (savedInstanceState == null) {
+            analytics.sendScreenView("App Intro");
+        }
 
         addSlide(new AppIntroFragment.Builder()
                          .title(R.string.title_tutorial_0)
@@ -61,7 +71,7 @@ public class IntroActivity extends AppIntro {
                              .drawable(R.drawable.tutorial_4).build());
         }
 
-        if (SDK_INT >= LOLLIPOP && !Utils.isUsageStatsEnabled(this)) {
+        if (SDK_INT >= LOLLIPOP && !UsageStats.isEnabled(this)) {
             addUsageStatsSlide();
         }
     }
@@ -89,9 +99,11 @@ public class IntroActivity extends AppIntro {
     @TargetApi(LOLLIPOP)
     @Override
     public void onDonePressed() {
-        if (usageStatsSlideAdded && !Utils.isUsageStatsEnabled(this)) {
-            boolean success = Intents.maybeStartUsageAccessSettings(this);
-            if (!success) {
+        if (usageStatsSlideAdded && !UsageStats.isEnabled(this)) {
+            boolean success = UsageStatsKt.maybeStartUsageAccessSettings(this);
+            if (success) {
+                observeUsageStats();
+            } else {
                 finish();
             }
         } else {
@@ -99,12 +111,20 @@ public class IntroActivity extends AppIntro {
         }
     }
 
+    @RequiresApi(LOLLIPOP)
+    private void observeUsageStats() {
+        Disposable disposable = UsageStats.observeAccessGiven(this)
+                .compose(schedulingStrategy.forCompletable())
+                .subscribe(() -> Intents.restartSettings(this));
+        disposables.add(disposable);
+    }
+
     @TargetApi(LOLLIPOP)
     @Override
     protected void onResume() {
         super.onResume();
 
-        if (usageStatsSlideAdded && Utils.isUsageStatsEnabled(this)) {
+        if (usageStatsSlideAdded && UsageStats.isEnabled(this)) {
             setDoneText(getString(R.string.done));
         }
     }
@@ -117,9 +137,10 @@ public class IntroActivity extends AppIntro {
             analytics.sendEvent(
                     "Usage Access",
                     "Given in first intro",
-                    Boolean.toString(Utils.isUsageStatsEnabled(this))
+                    Boolean.toString(UsageStats.isEnabled(this))
             );
         }
+        disposables.clear();
     }
 
     private boolean shouldTrackUsageAccess() {

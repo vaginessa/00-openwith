@@ -4,7 +4,7 @@ apply plugin: 'kotlin-kapt'
 apply plugin: 'com.novoda.android-command'
 apply plugin: 'com.novoda.build-properties'
 apply plugin: 'com.github.triplet.play'
-if (isPlay) apply plugin: 'io.fabric'
+apply plugin: 'io.fabric'
 apply plugin: 'net.ltgt.errorprone'
 
 def signingFile = file('props/release.signing')
@@ -27,7 +27,7 @@ android {
     versionName versions.versionName
     buildConfigField 'String', 'GIT_SHA', "\"${gitSha}\""
 
-    resConfigs 'ar', 'de', 'en', 'es', 'fr', 'in', 'it', 'ja', 'pl', 'pt-rBR', 'pt-rPT', 'ru', 'sv', 'tr', 'uk', 'zh-rCN'
+    resConfigs 'ar', 'de', 'en', 'es', 'fr', 'in', 'it', 'iw-rIL', 'ja', 'pl', 'pt-rBR', 'pt-rPT', 'ru', 'sv', 'tr', 'uk', 'vi', 'zh-rCN'
 
     javaCompileOptions.annotationProcessorOptions {
       arguments['butterknife.minSdk'] = minSdkVersion.apiString
@@ -42,6 +42,7 @@ android {
 
   buildTypes {
     debug {
+      ext.enableCrashlytics = false
       applicationIdSuffix '.debug'
       versionNameSuffix '-debug'
       signingConfig signingConfigs.debug
@@ -82,7 +83,7 @@ android {
 play {
   serviceAccountEmail = secrets['play_service_account'].or('').string
   pk12File = file(secrets['play_key_file'].or('no_file.p12').string)
-  track = 'beta'
+  track = 'alpha'
 }
 
 configurations {
@@ -91,6 +92,7 @@ configurations {
 }
 
 dependencies {
+  implementation "org.jetbrains.kotlin:kotlin-stdlib-jre7:$versions.kotlin"
 
   implementation "org.jetbrains.kotlin:kotlin-stdlib-jre7:$versions.kotlin"
 
@@ -118,15 +120,14 @@ dependencies {
   implementation 'io.reactivex.rxjava2:rxandroid:2.0.1'
   implementation 'io.reactivex.rxjava2:rxjava:2.1.6'
 
-  playImplementation 'com.crashlytics.sdk.android:crashlytics:2.7.1'
-  playImplementation "com.google.firebase:firebase-core:$versions.gms"
+  playImplementation('com.crashlytics.sdk.android:crashlytics:2.7.1@aar') {
+    transitive true
+  }
 
   testImplementation 'junit:junit:4.12'
-  testImplementation 'org.mockito:mockito-core:2.11.0'
+  testImplementation 'org.mockito:mockito-core:2.12.0'
   testImplementation "com.squareup.okhttp3:mockwebserver:$versions.okHttp"
 }
-
-if (isPlay) apply plugin: 'com.google.gms.google-services'
 
 project.tasks.withType(JavaCompile) {
   options.compilerArgs += [
