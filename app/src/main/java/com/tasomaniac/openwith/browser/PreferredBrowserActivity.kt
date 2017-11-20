@@ -28,7 +28,7 @@ class PreferredBrowserActivity : DaggerAppCompatActivity(), BrowsersAdapter.List
     setContentView(R.layout.activity_preferred_apps)
     ButterKnife.bind(this)
 
-    analytics.sendScreenView(this, "Browser Apps")
+    analytics.sendScreenView("Browser Apps")
 
     setupToolbar()
     setupList()
